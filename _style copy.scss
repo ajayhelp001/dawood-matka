@@ -274,19 +274,34 @@ section{
 // Hero Section Css
 .hero-section {
     position: relative;
+    
     &>div{
+        background: linear-gradient(90deg, #fff 50%, #FEF7F4 50%);
         &>div{
             position: relative;
             z-index: 5;
         }
     }
+    & .plus-img{
+        position: absolute;
+        bottom: 50px;
+        left: 40px;
+        animation: moveanimationY 5s ease-in-out 0s infinite alternate both;
+        background: none;
+        & img {
+            max-width: 100%;
+        }
+    }
+   
     & .main {
+        display: flex;
+        align-items: center;
         &>div {
-            padding: 120px 0px;
+            padding: 120px 30px;
+            width: 50%;
             height: 100%;
         }
         & .left-side {
-            text-align: center;
             & .heading {
                 margin-bottom: 20px;
             }
@@ -313,43 +328,6 @@ section{
                 }
             }
         }
-    }
-    &::before{
-        content: '';
-        width: 300px;
-        height: 325px;
-        position: absolute;
-        background: url(../../images/left-abstrect.png) no-repeat center;
-        background-size: cover;
-        top: 0;
-        left: 0;
-    }
-}
-
-// live-result
-.live-result {
-    position: relative;
-    background: #FEF7F4;
-    &>div{
-        &>div{
-            position: relative;
-            z-index: 5;
-        }
-    }
-    & .plus-img{
-        position: absolute;
-        bottom: 50px;
-        left: 40px;
-        animation: moveanimationY 5s ease-in-out 0s infinite alternate both;
-        background: none;
-        & img {
-            max-width: 100%;
-        }
-    }
-    & .main {
-        &>div {
-            padding: 120px 0px;
-        }
         & .right-side {
             position: relative;
             z-index: 2;
@@ -357,10 +335,11 @@ section{
                 box-shadow: 0px 4px 24px 0px #0000000D;
                 & .card-header {
                     background-color: var(--primary-color);
-                    padding: 22px;
-                    & .heading-title{
-                        color: var(--white-color);
-                    }
+                    color: var(--white-color);
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: 20px;
+                    padding: 15px;
                 }
                 & .card-body {
                     background-color: var(--white-color);
@@ -376,54 +355,50 @@ section{
                         margin: 16px 0px 40px;
                     }
                     & .result {
-                        // display: grid;
-                        // grid-template-columns: repeat(2 , 1fr);
-                        border: 1px solid var(--btn-border-color);
-                        border-radius: 10px;
+                        display: grid;
+                        grid-template-columns: repeat(2 , 1fr);
                         position: relative;
-                        // &::before, &::after{
-                        //     content: '';
-                        //     position: absolute;
-                        //     width: 100%;
-                        //     left: 0;
-                        //     height: 1px;
-                        //     background-image: linear-gradient(90deg, rgba(239, 88, 42, 0) 0%, #EF582A 50.55%, rgba(239, 88, 42, 0) 100%);
-                        // }
-                        // &::before{
-                        //     top: 0;
-                        // }
-                        // &::after{
-                        //     bottom: 0;
-                        // }
+                        &::before, &::after{
+                            content: '';
+                            position: absolute;
+                            width: 100%;
+                            left: 0;
+                            height: 1px;
+                            background-image: linear-gradient(90deg, rgba(239, 88, 42, 0) 0%, #EF582A 50.55%, rgba(239, 88, 42, 0) 100%);
+                        }
+                        &::before{
+                            top: 0;
+                        }
+                        &::after{
+                            bottom: 0;
+                        }
                         & .counts {
                             text-align: center;
                             padding: 36px;
                             position: relative;
-                            // border-radius: 10px;
-                            // border: 1px solid var(--btn-border-color);
                             & .counter {
                                 font-family: var(--readex-font);
-                                font-size: 60px;
+                                font-size: 40px;
                                 font-weight: 500;
-                                line-height: 70px;
+                                line-height: 50px;
                                 color: var(--primary-color);
                                 margin-bottom: 4px;
                             }
                             & .counter-name {
-                                font-size: 26px;
+                                font-size: 18px;
                                 font-weight: 600;
-                                line-height: 37px;
+                                line-height: 29px;
                                 text-transform: uppercase;
                             }
                             &:not(:last-child){
                                 &::before{
                                     content: '';
                                     position: absolute;
-                                    width: 100%;
+                                    width: 1px;
                                     right: 0;
-                                    bottom: 0;
-                                    height: 1px;
-                                    background-image: linear-gradient(90deg, rgba(239, 88, 42, 0) 0%, #EF582A 50.55%, rgba(239, 88, 42, 0) 100%);
+                                    top: 0;
+                                    height: 100%;
+                                    background-image: linear-gradient(0deg, rgba(239, 88, 42, 0) 0%, #EF582A 50.55%, rgba(239, 88, 42, 0) 100%);
                                 }
                             }
                         }
@@ -432,13 +407,19 @@ section{
             }
         }
     }
-    &::after{
+    &::after, &::before{
         content: '';
         width: 300px;
         height: 325px;
         position: absolute;
         background: url(../../images/left-abstrect.png) no-repeat center;
         background-size: cover;
+    }
+    &::before {
+        top: 0;
+        left: 0;
+    }
+    &::after {
         bottom: 0;
         right: 0;
         transform: rotate(180deg);
@@ -547,18 +528,17 @@ section{
         & .result-items {
             border-radius: 10px;
             padding: 50px 30px;
-            background-color: var(--white-color);
+            background-color: var(--secondary-color);
             text-align: center;
             color: var(--white-color);
-            border: 1px solid var(--btn-border-color);
             &:not(:last-child){
                 margin-bottom: 30px;
             }
-            // &:nth-child(odd){
-            //     background-color: var(--primary-color);;
-            // }
+            &:nth-child(odd){
+                background-color: var(--primary-color);;
+            }
             & .state-name, & .time {
-                color: var(--primary-color);
+                color: var(--white-color);
             }
             & .time {
                 font-weight: 700;
@@ -571,7 +551,7 @@ section{
                 & .number {
                     padding: 14px 30px;
                     background-color: var(--white-color);
-                    color: #0048ff;
+                    color: var(--secondary-color);
                     border-radius: 10px;
                     border: 1px solid #EAEAEA;
                     font-family: var(--readex-font);
@@ -585,7 +565,7 @@ section{
                     align-items: center;
                     justify-content: center;
                     & img {
-                        max-width: 100%;
+                        max-width: 21px;
                     }
                 }
             }
@@ -907,7 +887,7 @@ section{
 // Responsive Css
 @media screen and (max-width: 1399.98px) {
     // Hero Section Css
-    .hero-section, .live-result {
+    .hero-section {
         & .main {
             &>div {
                 padding: 100px 30px;
@@ -971,19 +951,11 @@ section{
         }
     }
     // Hero Section Css
-    .hero-section, .live-result {
+    .hero-section {
         & .main {
             &>div {
                 padding: 80px 30px;
             }
-        }
-        &::after, &::before{
-            width: 250px;
-            height: 275px;
-        }
-    }
-    .hero-section {
-        & .main {
             & .left-side {
                 & .heading {
                     margin-bottom: 15px;
@@ -1000,10 +972,6 @@ section{
                     }
                 }
             }
-        }
-    }
-    .live-result {
-        & .main {
             & .right-side {
                 & .card {
                     & .card-body {
@@ -1013,9 +981,26 @@ section{
                             line-height: 27px;
                             margin: 14px 0px 30px;
                         }
+                        & .result {
+                            & .counts {
+                                padding: 36px;
+                                & .counter {
+                                    font-size: 35px;
+                                    line-height: 45px;
+                                }
+                                & .counter-name {
+                                    font-size: 16px;
+                                    line-height: 27px;
+                                }
+                            }
+                        }
                     }
                 }
             }
+        }
+        &::after, &::before{
+            width: 250px;
+            height: 275px;
         }
     }
     .game-result, .record-table, .sattaking-section, .policy-section{
@@ -1041,17 +1026,17 @@ section{
     }
 
     // Hero Section Css
-    .hero-section, .live-result {
-        overflow: hidden;
-        & .main {
-            &>div {
-                padding: 60px 0px;
-            }
-        }
-    }
-
     .hero-section {
+        overflow: hidden;
+        &>div{
+        background: none;
+        }
         & .main {
+            flex-direction: column;
+            &>div {
+                padding: 60px 15px;
+                width: 100%;
+            }
             & .left-side {
                 & .heading {
                     margin-bottom: 15px;
@@ -1068,33 +1053,21 @@ section{
                     }
                 }
             }
-        }
-    }
-
-    .live-result {
-        & .main {
             & .right-side {
-                & .card {
-                    & .card-body {
-                        & .result {
-                            & .counts {
-                                padding: 36px;
-                                & .counter {
-                                    font-size: 50px;
-                                    line-height: 60px;
-                                }
-                                & .counter-name {
-                                    font-size: 20px;
-                                    line-height: 31px;
-                                }
-                            }
-                        }
-                    }
+                &::before{
+                    content: '';
+                    position: absolute;
+                    height: 100%;
+                    width: calc(100% + 400px);
+                    background-color: var(--light-primary-color);
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: -1;
                 }
             }
         }
     }
-
     // result-section
     .result-section {
         padding: 20px 0px;
@@ -1210,12 +1183,6 @@ section{
     }
 
     // Hero Section Css
-    .hero-section, .live-result {
-        &::after, &::before{
-            width: 200px;
-            height: 225px;
-        }
-    }
     .hero-section {
         & .main {
             & .left-side {
@@ -1234,10 +1201,6 @@ section{
                     }
                 }
             }
-        }
-    }
-    .live-result {
-        & .main {
             & .right-side {
                 & .card {
                     & .card-body {
@@ -1250,6 +1213,10 @@ section{
                     }
                 }
             }
+        }
+        &::after, &::before{
+            width: 200px;
+            height: 225px;
         }
     }
 
@@ -1404,12 +1371,25 @@ section{
 
 @media screen and (max-width: 400px) {
     // Hero Section Css
-    .live-result {
+    .hero-section {
         & .main {
             & .right-side {
                 & .card {
                     & .card-body {
                         padding: 30px 12px;
+                        & .result {
+                            & .counts {
+                                padding: 30px 5px;
+                                & .counter {
+                                    font-size: 30px;
+                                    line-height: 40px;
+                                }
+                                & .counter-name {
+                                    font-size: 14px;
+                                    line-height: 20px;
+                                }
+                            }
+                        }
                     }
                 }
             }
